@@ -1,18 +1,15 @@
 const container = document.querySelector("#box-grid");
-const btnNewGrid = document.querySelector("#btNewGrid");
-
-document.documentElement.style.setProperty("--rows", 4);
-    document.documentElement.style.setProperty("--columns", 4);
+const btnNewGrid = document.querySelector("#btnNewGrid");
+const btnClean = document.querySelector("#btnClean");
+const btnColor = document.querySelector("#btnColor");
 
 function generatesGrid(rows, columns) {
-
     document.documentElement.style.setProperty("--rows", rows);
     document.documentElement.style.setProperty("--columns", columns);
 
     const divs = [];
 
     for (let i = 0; i < rows; i++) {
-
         divs.push(document.createElement("div"));
         divs[i].classList.add("flex-div");
         container.appendChild(divs[i]);
@@ -25,28 +22,68 @@ function generatesGrid(rows, columns) {
 
             divs[i].appendChild(innerDivs);
 
-            innerDivs.addEventListener('mouseover', () => {
+            if (container.children[i].children[j].classList.contains("inner-divs-actived")) {
+                innerDivs.classList.add("inner-divs-actived");
+            }
 
-                innerDivs.classList.add("inner-divs-actived")
-            })
+            innerDivs.addEventListener('mousedown', () => {
+                innerDivs.classList.add("inner-divs-actived");
+                innerDivs.addEventListener('mouseover', draw);
+            });
 
+            innerDivs.addEventListener('mouseup', () => {
+                innerDivs.removeEventListener('mouseover', draw);
+            });
         }
     }
 }
 
-function newGrid(){
+function newGrid() {
     let rows = prompt("Number of rows");
     let columns = prompt("Number of columns");
 
-    // Limpa o container antes de gerar um novo grid
+    if (rows > 100 || columns > 100) {
+        alert("Any of the values can't exceed 100");
+
+        return "";
+    }
+
     container.innerHTML = "";
 
     generatesGrid(rows, columns);
 }
 
 
-btnNewGrid.addEventListener("click", () => {
-    newGrid()
-})
+function draw() {
+    this.classList.add("inner-divs-actived");
+}
 
-generatesGrid(4, 4)
+function clean() {
+    container.innerHTML = "";
+}
+
+function setColor(color) {
+    const coloredDivs = document.querySelectorAll(".inner-divs-actived");
+
+    coloredDivs.forEach((div) => {
+        if (!div.classList.contains("original-color")) {
+            div.style.backgroundColor = color;
+        }
+    });
+
+    document.documentElement.style.setProperty("--color", color);
+}
+
+btnClean.addEventListener("click", () => {
+    clean();
+    generatesGrid(4, 4)
+})
+btnNewGrid.addEventListener("click", () => {
+    newGrid();
+});
+btnColor.addEventListener("input", () => {
+    setColor(btnColor.value);
+});
+
+setColor("#000000")
+generatesGrid(4, 4);

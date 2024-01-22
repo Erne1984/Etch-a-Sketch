@@ -2,6 +2,11 @@
     box-sizing: content-box;
     padding: 0;
     margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+    background-color: #D19C1D;
 }
 
 .container{
@@ -12,15 +17,44 @@
     justify-content: center;
 }
 
+.setting{
+    display: flex;
+    gap: 5px;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    background-color: #CEFF1A;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.btn-color{
+    -webkit-appearance: none;
+    width: 25px; 
+    height: 25px; 
+    border: none;
+    border-radius: 50%; 
+    padding: 0; 
+}
+
 .box-grid{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: aqua;
-    border: 1px solid black;
-    width: 900px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 800px;
     height: 700px;
     margin: 15px;
+    background-color: white;
 }
 
 .flex-div{
@@ -35,5 +69,5 @@
 }
 
 .inner-divs-actived{
-    background-color: orange;
+    background-color: var(--color);
 }
