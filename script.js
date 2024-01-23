@@ -66,9 +66,9 @@ function setColor(color) {
     const coloredDivs = document.querySelectorAll(".inner-divs-actived");
 
     coloredDivs.forEach((div) => {
-        if (!div.classList.contains("original-color")) {
-            div.style.backgroundColor = color;
-        }
+        let backgroundDiv = window.getComputedStyle(div);
+        let lastColor = backgroundDiv.getPropertyValue("background-color");
+        div.style.backgroundColor = lastColor;
     });
 
     document.documentElement.style.setProperty("--color", color);
