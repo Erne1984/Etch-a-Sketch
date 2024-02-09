@@ -1,15 +1,15 @@
-*{
+* {
     box-sizing: content-box;
     padding: 0;
     margin: 0;
     font-family: "Roboto", sans-serif;
 }
 
-body{
+body {
     background-color: #D19C1D;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,12 +17,12 @@ body{
     justify-content: center;
 }
 
-.setting{
+.setting {
     display: flex;
     gap: 5px;
 }
 
-.btn{
+.btn {
     display: flex;
     align-items: center;
     background-color: #CEFF1A;
@@ -33,20 +33,20 @@ body{
     border-radius: 10px;
 }
 
-.btn:hover{
+.btn:hover {
     cursor: pointer;
 }
 
-.btn-color{
+.btn-color {
     -webkit-appearance: none;
-    width: 25px; 
-    height: 25px; 
+    width: 25px;
+    height: 25px;
     border: none;
-    border-radius: 50%; 
-    padding: 0; 
+    border-radius: 50%;
+    padding: 0;
 }
 
-.box-grid{
+.box-grid {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -57,17 +57,43 @@ body{
     background-color: white;
 }
 
-.flex-div{
+.flex-div {
     display: flex;
     height: calc(100% / var(--rows));
     max-height: calc(100vh / var(--rows));
 }
 
-.inner-divs{
+.inner-divs {
     width: calc(100% / var(--columns));
     max-width: calc(100vw / var(--columns));
 }
 
-.inner-divs-actived{
+.inner-divs-actived {
     background-color: var(--color);
+}
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 20px;
+    color: black;
+}
+
+.fa-github {
+    color: white;
+    font-size: 28px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
 }
